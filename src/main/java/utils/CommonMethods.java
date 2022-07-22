@@ -46,7 +46,7 @@ public class CommonMethods extends PageInitializer {
         driver.quit();
     }
 
-    public static void establishRemoteConnectionWindows() throws Exception {
+    public static void GetTitleRemoteWindows() throws Exception {
         //establish instance of PerfectElements
         PerfectoElements perfectoElements = new PerfectoElements();
         //Web: Make sure to Auto generate capabilities for device selection: https://developers.perfectomobile.com/display/PD/Select+a+device+for+manual+testing#Selectadeviceformanualtesting-genCapGeneratecapabilities
@@ -64,28 +64,35 @@ public class CommonMethods extends PageInitializer {
         perfectoElements.remoteWebDriver= new RemoteWebDriver(new URL("https://" + PerfectoLabUtils.fetchCloudName(perfectoElements.cloudName) + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities);
         perfectoElements.remoteWebDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         perfectoElements.remoteWebDriver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-    }
-
-    public static void navigateToDHSPageOnPerfecto() throws Exception{
-        PerfectoElements perfectoElements = new PerfectoElements();
         perfectoElements.reportiumClient = PerfectoLabUtils.setReportiumClient(perfectoElements.remoteWebDriver, perfectoElements.reportiumClient); //Creates reportiumClient
         perfectoElements.reportiumClient.testStart("Perfecto desktop web test", new TestContext("tag2", "tag3")); //Starts the reportium test
         perfectoElements.reportiumClient.stepStart("browser navigate to perfecto"); //Starts a reportium step
         perfectoElements.remoteWebDriver.get("https://www.dhs.gov");
         perfectoElements.reportiumClient.stepEnd();
-    }
-
-    public static void getTitleRemoteConnection() throws Exception{
-        PerfectoElements perfectoElements = new PerfectoElements();
         perfectoElements.reportiumClient.stepStart("Verify title");
         String aTitle = driver.getTitle();
         PerfectoLabUtils.assertTitle(aTitle, perfectoElements.reportiumClient); //compare the actual title with the expected title
         perfectoElements.reportiumClient.stepEnd();
+        perfectoElements.remoteWebDriver.close();
+        perfectoElements.remoteWebDriver.quit();
     }
+
+
+
 
     public static void establishRemoteConnectionAndroid() throws Exception{
         //establish instance of PerfectElements
         PerfectoElements perfectoElements = new PerfectoElements();
+        DesiredCapabilities capabilities = new DesiredCapabilities("", "", Platform.ANY);
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("platformVersion", "9");
+        capabilities.setCapability("location", "NA-US-BOS");
+        capabilities.setCapability("resolution", "1440x3040");
+        capabilities.setCapability("manufacturer", "Samsung");
+        capabilities.setCapability("model", "Galaxy S10\\+");
+
+        // The below capability is mandatory. Please do not replace it.
+        capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(perfectoElements.securityToken));
     }
 
 

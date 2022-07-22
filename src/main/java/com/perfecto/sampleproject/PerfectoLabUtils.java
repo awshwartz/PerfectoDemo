@@ -58,7 +58,7 @@ public class PerfectoLabUtils {
 	 */
 	public static String fetchCloudName(String cloudName) throws Exception {
 		//Verifies if cloudName is hardcoded, else loads from Maven properties 
-		String finalCloudName = cloudName.equalsIgnoreCase("<<cloud name>>") ? System.getProperty("cloudName") : cloudName;
+		String finalCloudName = cloudName.equalsIgnoreCase("<<cloudName>>") ? System.getProperty("cloudName") : cloudName;
 		//throw exceptions if cloudName isnt passed:
 		if(finalCloudName == null || finalCloudName.equalsIgnoreCase("<<cloud name>>"))
 			throw new Exception("Please replace <<cloud name>> with your perfecto cloud name (e.g. demo) or pass it as maven properties: -DcloudName=<<cloud name>>");

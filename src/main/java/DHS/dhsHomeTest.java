@@ -1,7 +1,9 @@
 package DHS;
 
+
 import com.perfecto.reportium.test.result.TestResult;
 import com.perfecto.reportium.test.result.TestResultFactory;
+import com.perfecto.sampleproject.PerfectoLabUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +14,7 @@ import utils.CommonMethods;
 import utils.PerfectoElements;
 
 import java.util.concurrent.TimeUnit;
+
 
 import static org.testng.Assert.assertTrue;
 
@@ -25,18 +28,16 @@ public class dhsHomeTest extends CommonMethods {
         //close the browser after test is complete
         closeBrowser();
         //Run the same test using the remote Perfecto Connection
-        establishRemoteConnectionWindows();
+       GetTitleRemoteWindows();
         //navigate to DHS using the Remote connection with Perfecto
-     //   navigateToDHSPageOnPerfecto();
-        //get title
-       // getTitle();
-        //check accessibility
+        //Establish remote Mobile Connection
+
        // checkAccess();
-        //close broswer
+        //close browser
         //closeBrowser();
     }
     @AfterMethod
-    public void afterMethod(ITestResult result) {
+    public void afterMethod(ITestResult result) throws Exception {
         PerfectoElements perfectoElements = new PerfectoElements();
         //STOP TEST
         TestResult testResult = null;
@@ -47,10 +48,8 @@ public class dhsHomeTest extends CommonMethods {
         else if (result.getStatus() == result.FAILURE) {
             testResult = TestResultFactory.createFailure(result.getThrowable());
         }
+        perfectoElements.reportiumClient = PerfectoLabUtils.setReportiumClient(perfectoElements.remoteWebDriver, perfectoElements.reportiumClient);
         perfectoElements.reportiumClient.testStop(testResult);
-
-        perfectoElements.remoteWebDriver.close();
-        perfectoElements.remoteWebDriver.quit();
         // Retrieve the URL to the DigitalZoom Report
         String reportURL = perfectoElements.reportiumClient.getReportUrl();
         System.out.println(reportURL);
