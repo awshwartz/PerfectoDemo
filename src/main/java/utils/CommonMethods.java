@@ -70,7 +70,7 @@ public class CommonMethods extends PageInitializer {
         perfectoElements.remoteWebDriver.get("https://www.dhs.gov");
         perfectoElements.reportiumClient.stepEnd();
         perfectoElements.reportiumClient.stepStart("Verify title");
-        String aTitle = driver.getTitle();
+        String aTitle = perfectoElements.remoteWebDriver.getTitle();
         PerfectoLabUtils.assertTitle(aTitle, perfectoElements.reportiumClient); //compare the actual title with the expected title
         perfectoElements.reportiumClient.stepEnd();
         perfectoElements.remoteWebDriver.close();
@@ -93,7 +93,20 @@ public class CommonMethods extends PageInitializer {
 
         // The below capability is mandatory. Please do not replace it.
         capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(perfectoElements.securityToken));
+
+
+        perfectoElements.remoteWebDriver= new RemoteWebDriver(new URL("https://" + PerfectoLabUtils.fetchCloudName(perfectoElements.cloudName) + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities);
+        perfectoElements.remoteWebDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        perfectoElements.remoteWebDriver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+
+        perfectoElements.reportiumClient = PerfectoLabUtils.setReportiumClient(perfectoElements.remoteWebDriver, perfectoElements.reportiumClient); //Creates reportiumClient
+        perfectoElements.reportiumClient.testStart("Perfecto desktop web test", new TestContext("tag2", "tag3")); //Starts the reportium test
+        perfectoElements.reportiumClient.stepStart("browser navigate to perfecto"); //Starts a reportium step
+        perfectoElements.remoteWebDriver.get("https://www.dhs.gov");
+        perfectoElements.reportiumClient.stepEnd();
     }
+
+
 
 
 
