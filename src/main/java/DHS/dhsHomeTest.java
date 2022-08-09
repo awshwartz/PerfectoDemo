@@ -28,15 +28,15 @@ public class dhsHomeTest extends CommonMethods {
         //close the browser after test is complete
         closeBrowser();
         //Run the same test using the remote Perfecto Connection
-        GetTitleRemoteWindows();
+      //GetTitleRemoteWindows();
         //navigate to DHS using the Remote connection with Perfecto
         //Establish remote Mobile Connection
         establishRemoteConnectionAndroid();
-        checkAccess();
+        //checkAccess();
         //close browser
         //closeBrowser();
     }
-    /*
+
     @AfterMethod
     public void afterMethod(ITestResult result) throws Exception {
         PerfectoElements perfectoElements = new PerfectoElements();
@@ -55,5 +55,5 @@ public class dhsHomeTest extends CommonMethods {
         String reportURL = perfectoElements.reportiumClient.getReportUrl();
         System.out.println(reportURL);
     }
-     */
+
 }

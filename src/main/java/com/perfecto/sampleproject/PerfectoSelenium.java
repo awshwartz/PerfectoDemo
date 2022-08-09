@@ -24,15 +24,19 @@ public class PerfectoSelenium {
 	String cloudName = "trial";
 	
 	//Replace <<security token>> with your perfecto security token or pass it as maven properties: -DsecurityToken=<<SECURITY TOKEN>>  More info: https://developers.perfectomobile.com/display/PD/Generate+security+tokens
-	String securityToken = "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2ZDM2NmJiNS01NDAyLTQ4MmMtYTVhOC1kODZhODk4MDYyZjIifQ.eyJpYXQiOjE2NTgzMzA2NzQsImp0aSI6ImViNzg3ZGIyLTBlMDgtNGYwZi1hMmZiLTk3NDFlMzI3MTJiNCIsImlzcyI6Imh0dHBzOi8vYXV0aDMucGVyZmVjdG9tb2JpbGUuY29tL2F1dGgvcmVhbG1zL3RyaWFsLXBlcmZlY3RvbW9iaWxlLWNvbSIsImF1ZCI6Imh0dHBzOi8vYXV0aDMucGVyZmVjdG9tb2JpbGUuY29tL2F1dGgvcmVhbG1zL3RyaWFsLXBlcmZlY3RvbW9iaWxlLWNvbSIsInN1YiI6ImY3Yjg0ZTc5LTYxOGMtNDcxYi04MDAzLTlmNjRlZmVkMDYzMSIsInR5cCI6Ik9mZmxpbmUiLCJhenAiOiJvZmZsaW5lLXRva2VuLWdlbmVyYXRvciIsIm5vbmNlIjoiYjcxZDFjZWMtYmY3Yi00YmU4LTkxMWEtZjUxOTRkMTIyYmRkIiwic2Vzc2lvbl9zdGF0ZSI6IjRlNTcxNWMwLTViNTktNDA3NC1hZDI2LWIzMDUxZGRmMzExOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHByb2ZpbGUgZW1haWwifQ.dSCqdbbWhLX9puc0sAAJqDXMwAtBg3124WWu1zjOBw4";
+	String securityToken = "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2ZDM2NmJiNS01NDAyLTQ4MmMtYTVhOC1kODZhODk4MDYyZjIifQ.eyJpYXQiOjE2NTk3MTMwMDcsImp0aSI6IjYxMDliYzNiLTZmYTctNDFmNS1iZGI5LTQzOGYyNGZlM2ExMiIsImlzcyI6Imh0dHBzOi8vYXV0aDMucGVyZmVjdG9tb2JpbGUuY29tL2F1dGgvcmVhbG1zL3RyaWFsLXBlcmZlY3RvbW9iaWxlLWNvbSIsImF1ZCI6Imh0dHBzOi8vYXV0aDMucGVyZmVjdG9tb2JpbGUuY29tL2F1dGgvcmVhbG1zL3RyaWFsLXBlcmZlY3RvbW9iaWxlLWNvbSIsInN1YiI6IjA5NDMwMTQ2LTBkYTgtNDgxOS04NWMxLTFkMDcwYjllN2VkMiIsInR5cCI6Ik9mZmxpbmUiLCJhenAiOiJvZmZsaW5lLXRva2VuLWdlbmVyYXRvciIsIm5vbmNlIjoiM2QyNzc3ZWUtYzA3NC00MDc0LTk3NTktYjRhM2RjNzQ1MWI3Iiwic2Vzc2lvbl9zdGF0ZSI6ImE0YWRiZTRlLWQ4NDAtNDkzMS05Mjc0LTQ1ZjdmY2Y4MGY3MyIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHByb2ZpbGUgZW1haWwifQ.UDu_G3lqMp_M1pXHaZoQp7oU9Kw8WjApPAMMG6DoL6A";
+
 	@Test
 	public void androidTest() throws Exception {
 		//Mobile: Auto generate capabilities for device selection: https://developers.perfectomobile.com/display/PD/Select+a+device+for+manual+testing#Selectadeviceformanualtesting-genCapGeneratecapabilities
 		String browserName = "mobileOS";
 		DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
 		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("useAppiumForWeb", true);
-		capabilities.setCapability("openDeviceTimeout", 2);
+		capabilities.setCapability("platformVersion", "9");
+		capabilities.setCapability("location", "NA-US-BOS");
+		capabilities.setCapability("resolution", "1440x3040");
+		capabilities.setCapability("manufacturer", "Samsung");
+		capabilities.setCapability("model", "Galaxy S10\\+");
 
 		// The below capability is mandatory. Please do not replace it.
 		capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(securityToken));

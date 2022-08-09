@@ -37,7 +37,6 @@ public class CommonMethods extends PageInitializer {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         //declare the Map for script parameters
         Map<String, Object> params = new HashMap<>();
-
         params.put("tag", "login-screen");
         js.executeScript("mobile:checkAccessibility:audit", params);
     }
@@ -82,8 +81,9 @@ public class CommonMethods extends PageInitializer {
 
     public static void establishRemoteConnectionAndroid() throws Exception{
         //establish instance of PerfectElements
+        String browserName = "mobileOS";
         PerfectoElements perfectoElements = new PerfectoElements();
-        DesiredCapabilities capabilities = new DesiredCapabilities("", "", Platform.ANY);
+        DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "9");
         capabilities.setCapability("location", "NA-US-BOS");
@@ -101,9 +101,16 @@ public class CommonMethods extends PageInitializer {
 
         perfectoElements.reportiumClient = PerfectoLabUtils.setReportiumClient(perfectoElements.remoteWebDriver, perfectoElements.reportiumClient); //Creates reportiumClient
         perfectoElements.reportiumClient.testStart("Perfecto desktop web test", new TestContext("tag2", "tag3")); //Starts the reportium test
-        perfectoElements.reportiumClient.stepStart("browser navigate to perfecto"); //Starts a reportium step
+        perfectoElements.reportiumClient.stepStart("browser navigate to dhs"); //Starts a reportium step
         perfectoElements.remoteWebDriver.get("https://www.dhs.gov");
         perfectoElements.reportiumClient.stepEnd();
+
+/*        perfectoElements.reportiumClient.stepStart("Verify title");
+        String aTitle = perfectoElements.remoteWebDriver.getTitle();
+        System.out.println(aTitle);
+        PerfectoLabUtils.assertTitle(aTitle, "Home | Homeland Security"); //compare the actual title with the expected title
+        perfectoElements.reportiumClient.stepEnd();
+*/
     }
 
 
