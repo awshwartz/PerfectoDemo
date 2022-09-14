@@ -30,14 +30,14 @@ public class dhsHomeTest extends CommonMethods {
         String browserName = "safari";
         DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "12.3.1");
-        capabilities.setCapability("platformBuild", "16F203");
+        capabilities.setCapability("platformVersion", "14.3");
+        capabilities.setCapability("platformBuild", "18C66");
         capabilities.setCapability("location", "NA-US-BOS");
-        capabilities.setCapability("resolution", "828x1792");
-        capabilities.setCapability("accountName", "ios2");
+        capabilities.setCapability("resolution", "1125x2436");
+        capabilities.setCapability("accountName", "dev1");
         capabilities.setCapability("deviceStatus", "CONNECTED");
         capabilities.setCapability("manufacturer", "Apple");
-        capabilities.setCapability("model", "iPhone-XR");
+        capabilities.setCapability("model", "iPhone-11 Pro");
 
         // The below capability is mandatory. Please do not replace it.
         capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(securityToken));
@@ -54,18 +54,21 @@ public class dhsHomeTest extends CommonMethods {
         remoteWebDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         remoteWebDriver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 
-        initializePageObjects(remoteWebDriver);
+        JavascriptExecutor js = (JavascriptExecutor) remoteWebDriver;
+
 
         reportiumClient = PerfectoLabUtils.setReportiumClient(remoteWebDriver, reportiumClient); //Creates reportiumClient
-        reportiumClient.testStart("Perfecto iOS Accessibility Test", new TestContext("tag2", "tag3")); //Starts the reportium test
+        reportiumClient.testStart("Perfecto Android Accessibility Test", new TestContext("tag2", "tag3")); //Starts the reportium test
         reportiumClient.stepStart("browser navigate to dhs"); //Starts a reportium step
         remoteWebDriver.get(dhsHomePage);
         reportiumClient.stepEnd();
 
+        //These next three lines are the code that actually activate Accessibilty Scanner, take a screenshot, and generate a JSON Report. Copy and paste this code when you need to actually run the scanner
         reportiumClient.stepStart("Check access");
-        JavascriptExecutor js = (JavascriptExecutor) remoteWebDriver;
         checkAccess(js, "Home part 1");
         reportiumClient.stepEnd();
+
+        initializePageObjects(remoteWebDriver);
 
         reportiumClient.stepStart("Scroll to second part of Home page");
         js.executeScript("arguments[0].scrollIntoView();", homePage.schoolSafeBtn);
@@ -96,7 +99,7 @@ public class dhsHomeTest extends CommonMethods {
         reportiumClient.stepEnd();
 
         reportiumClient.stepStart("Scroll to second part of CS page");
-        js.executeScript("window.scrollBy(0, 100)");
+        js.executeScript("window.scrollBy(0, 800)");
         reportiumClient.stepEnd();
 
         reportiumClient.stepStart("Check access");
@@ -105,12 +108,12 @@ public class dhsHomeTest extends CommonMethods {
         reportiumClient.stepEnd();
 
         reportiumClient.stepStart("Scroll to third part of BS page");
-        js.executeScript("window.scrollBy(0, 100)");
+        js.executeScript("window.scrollBy(0, 800)");
         reportiumClient.stepEnd();
 
         reportiumClient.stepStart("Check Access");
         //declare the Map for script parameters
-        checkAccess(js, "Border Security part 3");
+        checkAccess(js, "Border security part 3");
         reportiumClient.stepEnd();
 
 
