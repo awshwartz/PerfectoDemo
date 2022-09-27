@@ -10,7 +10,7 @@
     <test name="Web ADA test with AXE">
         <parameter name="url" value="https://www.dhs.gov/"></parameter>
         <classes>
-            <class name="DHSWebTest"/>
+            <class name="DHS.DHSWebTest"/>
         </classes>
     </test> <!-- Test -->
 
