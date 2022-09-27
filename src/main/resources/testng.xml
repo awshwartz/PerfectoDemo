@@ -6,19 +6,15 @@
 			<class name="com.perfecto.sampleproject.LocalAppium" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="LocalSelenium" enabled="true">
+	<test name="DHSHomeTest" enabled="true">
 		<classes>
-			<class name="com.perfecto.sampleproject.LocalSelenium" />
+			<class name="DHS.dhsHomeTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="PerfectoAppium" enabled="true">
+	<test name="DHSWebTest" enabled="false">
 		<classes>
-			<class name="com.perfecto.sampleproject.PerfectoAppium" />
+			<class name="DHS.DHSWebTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="PerfectoSelenium" enabled="true">
-		<classes>
-			<class name="com.perfecto.sampleproject.PerfectoSelenium" />
-		</classes>
-	</test> <!-- Test -->
+
 </suite> <!-- Suite -->
