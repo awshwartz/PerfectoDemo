@@ -11,7 +11,7 @@
 			<class name="DHS.dhsHomeTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="DHSWebTest" enabled="false">
+	<test name="DHSWebTest" enabled="true">
 		<classes>
 			<class name="DHS.DHSWebTest" />
 		</classes>
