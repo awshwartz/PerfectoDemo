@@ -58,7 +58,7 @@ public class dhsHomeTest extends CommonMethods {
 
 
         reportiumClient = PerfectoLabUtils.setReportiumClient(remoteWebDriver, reportiumClient); //Creates reportiumClient
-        reportiumClient.testStart("Perfecto Android Accessibility Test", new TestContext("tag2", "tag3")); //Starts the reportium test
+        reportiumClient.testStart("Perfecto iOS Accessibility Test", new TestContext("tag2", "tag3")); //Starts the reportium test
         reportiumClient.stepStart("browser navigate to dhs"); //Starts a reportium step
         remoteWebDriver.get(dhsHomePage);
         reportiumClient.stepEnd();
