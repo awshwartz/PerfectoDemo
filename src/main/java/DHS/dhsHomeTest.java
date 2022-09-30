@@ -124,13 +124,13 @@ public class dhsHomeTest extends CommonMethods {
         String browserName = "mobileOS";
         DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "12");
-        capabilities.setCapability("platformBuild", "SQ3A.220605.009.B1");
+        capabilities.setCapability("platformVersion", "9");
+        capabilities.setCapability("platformBuild", "PPR1.180610.011.G975U1UEU2BSIP");
         capabilities.setCapability("location", "NA-US-BOS");
-        capabilities.setCapability("resolution", "1080x2400");
+        capabilities.setCapability("resolution", "1440x3040");
         capabilities.setCapability("deviceStatus", "CONNECTED");
-        capabilities.setCapability("manufacturer", "Google");
-        capabilities.setCapability("model", "Pixel 6");
+        capabilities.setCapability("manufacturer", "Samsung");
+        capabilities.setCapability("model", "Galaxy S10\\+");
 
         // The below capability is mandatory. Please do not replace it.
         capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(securityToken));
