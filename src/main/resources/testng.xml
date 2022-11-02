@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests">
-	<test name="DHSHomeTest" enabled="true">
+	<test name="DHSHomeTest" enabled="false">
 		<classes>
 			<class name="DHS.dhsHomeTest" />
 		</classes>
 	</test> <!-- Test -->
-	<test name="DHSWebTest" enabled="false">
+	<test name="DHSWebTest" enabled="true">
 		<classes>
 			<class name="DHS.DHSWebTest" />
 		</classes>
