@@ -118,7 +118,7 @@ capabilities.setCapability("model", "iPhone-13");
 
 
     }
-/*
+
     @Test
     public void DHSHomeTestAndroid() throws Exception {
         String browserName = "mobileOS";
@@ -210,7 +210,7 @@ capabilities.setCapability("model", "Galaxy Tab S4 10\\.5");
 
 
     }
-*/
+
     @AfterMethod
     public void afterMethod(ITestResult result) throws Exception {
         //STOP TEST
