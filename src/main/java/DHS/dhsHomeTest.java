@@ -29,15 +29,15 @@ public class dhsHomeTest extends CommonMethods {
     public void DHSHomeTestiOS() throws Exception{
         String browserName = "safari";
         DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
-        capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "14.3");
-        capabilities.setCapability("platformBuild", "18C66");
-        capabilities.setCapability("location", "NA-US-BOS");
-        capabilities.setCapability("resolution", "1125x2436");
-        capabilities.setCapability("accountName", "dev1");
-        capabilities.setCapability("deviceStatus", "CONNECTED");
-        capabilities.setCapability("manufacturer", "Apple");
-        capabilities.setCapability("model", "iPhone-11 Pro");
+capabilities.setCapability("platformName", "iOS");
+capabilities.setCapability("platformVersion", "15.0");
+capabilities.setCapability("platformBuild", "19A341");
+capabilities.setCapability("location", "NA-US-BOS");
+capabilities.setCapability("resolution", "1170x2532");
+capabilities.setCapability("accountName", "dev1");
+capabilities.setCapability("deviceStatus", "CONNECTED");
+capabilities.setCapability("manufacturer", "Apple");
+capabilities.setCapability("model", "iPhone-13");
 
         // The below capability is mandatory. Please do not replace it.
         capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(securityToken));
@@ -123,14 +123,14 @@ public class dhsHomeTest extends CommonMethods {
     public void DHSHomeTestAndroid() throws Exception {
         String browserName = "mobileOS";
         DesiredCapabilities capabilities = new DesiredCapabilities(browserName, "", Platform.ANY);
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "9");
-        capabilities.setCapability("platformBuild", "PPR1.180610.011.G975U1UEU2BSIP");
-        capabilities.setCapability("location", "NA-US-BOS");
-        capabilities.setCapability("resolution", "1440x3040");
-        capabilities.setCapability("deviceStatus", "CONNECTED");
-        capabilities.setCapability("manufacturer", "Samsung");
-        capabilities.setCapability("model", "Galaxy S10\\+");
+capabilities.setCapability("platformName", "Android");
+capabilities.setCapability("platformVersion", "10");
+capabilities.setCapability("platformBuild", "QP1A.190711.020.T830XXU4CTJ1");
+capabilities.setCapability("location", "EU-DE-FRA");
+capabilities.setCapability("resolution", "1600x2560");
+capabilities.setCapability("deviceStatus", "CONNECTED");
+capabilities.setCapability("manufacturer", "Samsung");
+capabilities.setCapability("model", "Galaxy Tab S4 10\\.5");
 
         // The below capability is mandatory. Please do not replace it.
         capabilities.setCapability("securityToken", PerfectoLabUtils.fetchSecurityToken(securityToken));
